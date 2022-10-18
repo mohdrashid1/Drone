@@ -1,0 +1,12 @@
+---
+kind: pipeline
+type: docker
+name: default
+
+steps:
+- name: backend
+  image: ubuntu
+  commands:
+  - apt update
+  - apt install -y curl jq wget
+  - echo "Script execition is finished"
