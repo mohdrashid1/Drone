@@ -9,7 +9,7 @@ steps:
   commands:
   - apt update
   - apt install -y curl jq wget
-  - wget https://raw.githubusercontent.com/apisec-inc/apisec-scripts/master/apisec_job_invoke_script.sh?token=AVOLEQ4FVVPJJ3DPAME4JELBS56SI -O apisec_job_invoke_script.sh;bash apisec_job_invoke_script.sh --host https://developer.apisec.ai --username $username  --password $password --project "nerwersdfprject" --profile Master --scanner Super_1 --emailReport true --reportType RUN_SUMMARY
+  - wget https://raw.githubusercontent.com/apisec-inc/apisec-scripts/master/apisec_job_invoke_script.sh?token=AVOLEQ4FVVPJJ3DPAME4JELBS56SI -O apisec_job_invoke_script.sh;bash apisec_job_invoke_script.sh --host https://developer.apisec.ai --username syedimran@apisec  --password Welcome@1234 --project "nerwersdfprject" --profile Master --scanner Super_1 --emailReport true --reportType RUN_SUMMARY
   - echo "Script execition is finished"
   
   environment:
