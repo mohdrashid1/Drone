@@ -16,29 +16,29 @@ steps:
 #  - ls -la
 #  - echo "Script execition is finished"
   
-#   environment:
-#     scanner: Super_1
-#     email: true
-#     hostUrl: https://developer.apisec.ai
-#     projectName: nerwersdfprject
-#     profile: Master
-#     report: RUN_SUMMARY
-#     password:
-#       from_secret: password
-#     username:
-#       from_secret: username
+   environment:
+     scanner: Super_1
+     email: true
+     hostUrl: https://developer.apisec.ai
+     projectName: nerwersdfprject
+     profile: Master
+     report: RUN_SUMMARY
+     password:
+       from_secret: password
+     username:
+       from_secret: username
       
-  settings:
-    scanner: Super_1
-    email: true
-    hostUrl: https://developer.apisec.ai
-    projectName: nerwersdfprject
-    profile: Master
-    report: RUN_SUMMARY
-    password:
-      from_secret: password
-    username:
-      from_secret: username
+#  settings:
+#    scanner: Super_1
+##    email: true
+#    hostUrl: https://developer.apisec.ai
+#    projectName: nerwersdfprject
+#    profile: Master
+#    report: RUN_SUMMARY
+#    password:
+#      from_secret: password
+#    username:
+#      from_secret: username
 
   #environment:
   #  SCANNER: Super_1
