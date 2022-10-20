@@ -7,14 +7,14 @@ steps:
 - name: APIsec scan trigger
   #image: ubuntu
   image: apisec/drone-scan:latest
-  commands:
+#  commands:
 #  - apt update
 #  - apt install -y curl jq wget
 #  - wget https://raw.githubusercontent.com/apisec-inc/apisec-scripts/master/apisec_job_invoke_script.sh?token=AVOLEQ4FVVPJJ3DPAME4JELBS56SI -O apisec_job_invoke_script.sh;bash apisec_job_invoke_script.sh --host https://developer.apisec.ai --username $USERNAME  --password $PASSWORD --project "nerwersdfprject" --profile Master --scanner Super_1 --emailReport true --reportType RUN_SUMMARY
 #  - wget https://raw.githubusercontent.com/apisec-inc/apisec-scripts/master/apisec_job_invoke_script.sh?token=AVOLEQ4FVVPJJ3DPAME4JELBS56SI -O apisec_job_invoke_script.sh;bash apisec_job_invoke_script.sh --host https://developer.apisec.ai --username $USERNAME  --password $PASSWORD --project "nerwersdfprject" --profile Master --scanner $SCANNER --emailReport $EMAIL --reportType RUN_SUMMARY
-  - pwd
-  - ls -la
-  - echo "Script execition is finished"
+#  - pwd
+#  - ls -la
+#  - echo "Script execition is finished"
   
 #   environment:
 #     scanner: Super_1
