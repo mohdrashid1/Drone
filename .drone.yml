@@ -16,7 +16,7 @@ steps:
 #  - ls -la
 #  - echo "Script execition is finished"
   
-   environment:
+  environment:
      scanner: Super_1
      email: true
      hostUrl: https://developer.apisec.ai
