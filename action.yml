@@ -81,5 +81,5 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run:  ${GITHUB_ACTION_PATH}/apisec_playbooks_regenerate_scan_trigger.sh  "${{inputs.apisec-username}}" "${{ inputs.apisec-password }}" "${{ inputs.apisec-projectname }}" "${{ inputs.apisec-profile }}" "${{ inputs.apisec-region }}" "${{ inputs.sarif-result-file }}" "${{ inputs.apisec-host }}" "${{ inputs.apisec-emailReport }}"  "${{ inputs.apisec-reportType }}"
+    - run:  ${GITHUB_ACTION_PATH}/apisec_playbooks_regenerate_scan_trigger.sh  "${{ inputs.apisec-username }}" "${{ inputs.apisec-password }}" "${{ inputs.apisec-projectname }}" "${{ inputs.apisec-profile }}" "${{ inputs.apisec-region }}" "${{ inputs.sarif-result-file }}" "${{ inputs.apisec-host }}" "${{ inputs.apisec-emailReport }}"  "${{ inputs.apisec-reportType }}"
       shell: bash
