@@ -65,22 +65,22 @@ inputs:
     description: 'The path to the sarif format result file'
     required: false
     default: ''
-#   apisec-host:
-#     description: 'APIsec host url'
-#     required: false
-#     default: ''
-#   apisec-email-report:
-#     description: 'Whether to send report's email'
-#     required: false
-#     default: ''
-#   apisec-report-type:
-#     description: 'Type of Report to be email'
-#     required: false
-#     default: ''
+  apisec-host:
+    description: 'APIsec host url'
+    required: false
+    default: ''
+  apisec-email-report:
+    description: 'Whether to send report's email'
+    required: false
+    default: ''
+  apisec-report-type:
+    description: 'Type of Report to be email'
+    required: false
+    default: ''
 
 runs:
   using: "composite"
   steps:
-    - run:  ${GITHUB_ACTION_PATH}/apisec_playbooks_regenerate_scan_trigger.sh  "${{ inputs.apisec-username }}" "${{ inputs.apisec-password }}" "${{ inputs.apisec-projectname }}" "${{ inputs.apisec-profile }}" "${{ inputs.apisec-region }}" "${{ inputs.sarif-result-file }}"
+    - run:  ${GITHUB_ACTION_PATH}/apisec_playbooks_regenerate_scan_trigger.sh  "${{ inputs.apisec-username }}" "${{ inputs.apisec-password }}" "${{ inputs.apisec-projectname }}" "${{ inputs.apisec-profile }}" "${{ inputs.apisec-region }}" "${{ inputs.sarif-result-file }}" "${{ inputs.apisec-host }}" "${{ inputs.apisec-email-report }}"  "${{ inputs.apisec-report-type }}"
 #    - run:  ${GITHUB_ACTION_PATH}/apisec_playbooks_regenerate_scan_trigger.sh  "${{ inputs.apisec-username }}" "${{ inputs.apisec-password }}" "${{ inputs.apisec-projectname }}" "${{ inputs.apisec-profile }}" "${{ inputs.apisec-region }}" "${{ inputs.sarif-result-file }}" "${{ inputs.apisec-host }}" "${{ inputs.apisec-email-report }}"  "${{ inputs.apisec-report-type }}"
       shell: bash
