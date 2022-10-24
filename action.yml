@@ -1,44 +1,5 @@
-# action.yml
-name: 'APIsec Playbook Scan'
-description: 'Continuous, automated, comprehensive API Security Testing'
-inputs:
-  apisec-username:
-    description: 'The APIsec username with which the scans will be executed'
-    required: true
-    default: ''
-  apisec-password:
-    description: 'The Password of the APIsec user with which the scans will be executed'
-    required: true
-    default: '' 
-  apisec-project:
-    description: 'The Name of the project for security scan'
-    required: true
-    default: ''
-  apisec-profile:  
-    description: 'The Name of the scan profile to be executed'
-    required: false
-    default: 'Master'
-  apisec-region:  
-    description: 'The location the scan will be executed in'
-    required: false
-    default: ''
-  sarif-result-file:  
-    description: 'The path to the sarif format result file'
-    required: false
-    default: ''
- 
-runs:
-  using: "composite"
-  steps:
-    - run:  ${GITHUB_ACTION_PATH}/apisec_playbooks_regenerate_scan_trigger.sh "${{inputs.apisec-username}}" "${{ inputs.apisec-password }}" "${{ inputs.apisec-project }}" "${{ inputs.apisec-profile }}" "${{ inputs.apisec-region }}" "${{ inputs.sarif-result-file }}" 
-      shell: bash
-
-
-
-
-
 # # action.yml
-# name: 'APIsec Playbook Regeneration'
+# name: 'APIsec Playbook Scan'
 # description: 'Continuous, automated, comprehensive API Security Testing'
 # inputs:
 #   apisec-username:
@@ -49,7 +10,7 @@ runs:
 #     description: 'The Password of the APIsec user with which the scans will be executed'
 #     required: true
 #     default: '' 
-#   apisec-projectname:
+#   apisec-project:
 #     description: 'The Name of the project for security scan'
 #     required: true
 #     default: ''
@@ -65,21 +26,60 @@ runs:
 #     description: 'The path to the sarif format result file'
 #     required: false
 #     default: ''
-#   apisec-host:
-#     description: 'APIsec host url'
-#     required: false
-#     default: 'https://cloud.apisec.ai'
-#   apisec-emailReport:
-#     description: 'Whether to send report's email'
-#     required: false
-#     default: false
-#   apisec-reportType:
-#     description: 'Type of Report to be email'
-#     required: false
-#     default: 'RUN_SUMMARY'
-
+ 
 # runs:
 #   using: "composite"
 #   steps:
-#     - run:  ${GITHUB_ACTION_PATH}/apisec_playbooks_regenerate_scan_trigger.sh "${{inputs.apisec-host}}" "${{inputs.apisec-username}}" "${{ inputs.apisec-password }}" "${{ inputs.apisec-projectname }}" "${{ inputs.apisec-profile }}" "${{ inputs.apisec-region }}" "${{ inputs.sarif-result-file }}" "${{ inputs.apisec-emailReport }}"  "${{ inputs.apisec-reportType }}"
+#     - run:  ${GITHUB_ACTION_PATH}/apisec_playbooks_regenerate_scan_trigger.sh "${{inputs.apisec-username}}" "${{ inputs.apisec-password }}" "${{ inputs.apisec-project }}" "${{ inputs.apisec-profile }}" "${{ inputs.apisec-region }}" "${{ inputs.sarif-result-file }}" 
 #       shell: bash
+
+
+
+
+
+# action.yml
+name: 'APIsec Playbook Regeneration'
+description: 'Continuous, automated, comprehensive API Security Testing'
+inputs:
+  apisec-username:
+    description: 'The APIsec username with which the scans will be executed'
+    required: true
+    default: ''
+  apisec-password:
+    description: 'The Password of the APIsec user with which the scans will be executed'
+    required: true
+    default: '' 
+  apisec-projectname:
+    description: 'The Name of the project for security scan'
+    required: true
+    default: ''
+  apisec-profile:  
+    description: 'The Name of the scan profile to be executed'
+    required: false
+    default: 'Master'
+  apisec-region:  
+    description: 'The location the scan will be executed in'
+    required: false
+    default: ''
+  sarif-result-file:  
+    description: 'The path to the sarif format result file'
+    required: false
+    default: ''
+  apisec-host:
+    description: 'APIsec host url'
+    required: false
+    default: ''
+  apisec-emailReport:
+    description: 'Whether to send report's email'
+    required: false
+    default: ''
+  apisec-reportType:
+    description: 'Type of Report to be email'
+    required: false
+    default: ''
+
+runs:
+  using: "composite"
+  steps:
+    - run:  ${GITHUB_ACTION_PATH}/apisec_playbooks_regenerate_scan_trigger.sh "${{inputs.apisec-host}}" "${{inputs.apisec-username}}" "${{ inputs.apisec-password }}" "${{ inputs.apisec-projectname }}" "${{ inputs.apisec-profile }}" "${{ inputs.apisec-region }}" "${{ inputs.sarif-result-file }}" "${{ inputs.apisec-emailReport }}"  "${{ inputs.apisec-reportType }}"
+      shell: bash
