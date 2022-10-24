@@ -4,8 +4,11 @@ USER=$1
 PWD=$2
 PROJECT=$3
 JOB=$4
-REGION=$5
-OUTPUT_FILENAME=$6
+EMAILREPORT=$5
+REPORTTYPE=$6
+TAGS=$7
+REGION=$8
+OUTPUT_FILENAME=$9
 PARAM_SCRIPT=""
 if [ "$JOB" != "" ];
 then
@@ -20,13 +23,13 @@ elif [ "$REGION" != "" ];
 fi
 
 
-token=$(curl -s -H "Content-Type: application/json" -X POST -d '{"username": "'${USER}'", "password": "'${PWD}'"}' https://cloud.apisec.ai/login | jq -r .token)
+token=$(curl -s -H "Content-Type: application/json" -X POST -d '{"username": "'${USER}'", "password": "'${PWD}'"}' https://developer.apisec.ai/login | jq -r .token)
 
 echo "generated token is:" $token
 
-echo "The request is https://cloud.apisec.ai/api/v1/runs/projectName/${PROJECT}${PARAM_SCRIPT}"
+echo "The request is https://developer.apisec.ai/api/v1/runs/projectName/${PROJECT}${PARAM_SCRIPT}"
 
-data=$(curl --location --request POST "https://cloud.apisec.ai/api/v1/runs/projectName/${PROJECT}${PARAM_SCRIPT}" --header "Authorization: Bearer "$token"" | jq '.data')
+data=$(curl --location --request POST "https://developer.apisec.ai/api/v1/runs/projectName/${PROJECT}${PARAM_SCRIPT}" --header "Authorization: Bearer "$token"" | jq '.data')
 
 runId=$( jq -r '.id' <<< "$data")
 projectId=$( jq -r '.job.project.id' <<< "$data")
@@ -36,7 +39,7 @@ if [ -z "$runId" ]
 then
           echo "RunId = " "$runId"
           echo "Invalid runid"
-          echo $(curl --location --request POST "https://cloud.apisec.ai/api/v1/runs/projectName/${PROJECT}${PARAM_SCRIPT}" --header "Authorization: Bearer "$token"" | jq -r '.["data"]|.id')
+          echo $(curl --location --request POST "https://developer.apisec.ai/api/v1/runs/projectName/${PROJECT}${PARAM_SCRIPT}" --header "Authorization: Bearer "$token"" | jq -r '.["data"]|.id')
           exit 1
 fi
 
@@ -52,7 +55,7 @@ while [ "$taskStatus" == "WAITING" -o "$taskStatus" == "PROCESSING" ]
                 sleep 5
                  echo "Checking Status...."
 
-                passPercent=$(curl --location --request GET "https://cloud.apisec.ai/api/v1/runs/${runId}" --header "Authorization: Bearer "$token""| jq -r '.["data"]|.ciCdStatus')
+                passPercent=$(curl --location --request GET "https://developer.apisec.ai/api/v1/runs/${runId}" --header "Authorization: Bearer "$token""| jq -r '.["data"]|.ciCdStatus')
 
                         IFS=':' read -r -a array <<< "$passPercent"
 
@@ -65,12 +68,12 @@ while [ "$taskStatus" == "WAITING" -o "$taskStatus" == "PROCESSING" ]
                 if [ "$taskStatus" == "COMPLETED" ];then
             echo "------------------------------------------------"
                        # echo  "Run detail link https://cloud.apisec.ai/${array[7]}"
-                        echo  "Run detail link https://cloud.apisec.ai${array[7]}"
+                        echo  "Run detail link https://developer.apisec.ai${array[7]}"
                         echo "-----------------------------------------------"
                         echo "Job run successfully completed"
                         if [ "$OUTPUT_FILENAME" != "" ];
                          then
-                         sarifoutput=$(curl --location --request GET "https://cloud.apisec.ai/api/v1/projects/${projectId}/sarif" --header "Authorization: Bearer "$token""| jq '.data')
+                         sarifoutput=$(curl --location --request GET "https://developer.apisec.ai/api/v1/projects/${projectId}/sarif" --header "Authorization: Bearer "$token""| jq '.data')
 						 echo $sarifoutput >> $GITHUB_WORKSPACE/$OUTPUT_FILENAME
 						 echo "SARIF output file created successfully"
                         fi
@@ -84,7 +87,7 @@ echo "Task Status = " $taskStatus
  exit 1
 fi
 
-echo "$(curl --location --request GET "https://cloud.apisec.ai/api/v1/runs/${runId}" --header "Authorization: Bearer "$token"")"
+echo "$(curl --location --request GET "https://developer.apisec.ai/api/v1/runs/${runId}" --header "Authorization: Bearer "$token"")"
 exit 1
 
 return 0
