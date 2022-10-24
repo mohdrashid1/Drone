@@ -1,5 +1,5 @@
 # action.yml
-name: 'APIsec Scan'
+name: 'APIsec Playbook Regenerate Scan'
 description: 'Continuous, automated, comprehensive API Security Testing'
 inputs:
   apisec-username:
