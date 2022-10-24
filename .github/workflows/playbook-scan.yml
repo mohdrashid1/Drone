@@ -29,37 +29,28 @@ jobs:
       - name: Run a one-line script
         run: echo Hello, world!
         
-      - name: Trigger APIsec scan 
-        id: scan 
-        uses: apisec-inc/apisec-run-scan@v1.0.5
-        with: 
-          apisec-username: $❴❴ secrets.apisec_username ❵❵ 
-          apisec-password: $❴❴ secrets.apisec_password ❵❵ 
-          apisec-project:  testingapiproject
-          apisec-profile:  Master
-          apisec-region:   Super_1
+#       - name: Trigger APIsec scan 
+#         id: scan 
+#         uses: apisec-inc/apisec-run-scan@v1.0.5
+#         with: 
+#           apisec-username: $❴❴ secrets.apisec_username ❵❵ 
+#           apisec-password: $❴❴ secrets.apisec_password ❵❵ 
+#           apisec-project:  testingapiproject
+#           apisec-profile:  Master
+#           apisec-region:   Super_1
         
         
-#       - name: APIsec Playbook Regeneration
-#         # You may pin to the exact commit or the version.
-#         # uses: SyedsImran/NewDrone@d87c44bc8df00f0a624dd7532f8fd813248a590a
-#         uses: SyedsImran/NewDrone@v1.0.0
-#         with:
-#          # The APIsec username with which the scans will be executed
-#          apisec-username:  syedimran@apisec.ai
-#          # The Password of the APIsec user with which the scans will be executed
-#          apisec-password:  $❴❴ secrets.apisec_password ❵❵
-#          # The Name of the project for security scan
-#          apisec-projectname: netbankingtet123
-#          # The Name of the scan profile to be executed
-#          apisec-profile: Master
-#          # The location the scan will be executed in
-#          apisec-region: Super_1
-#          # The path to the sarif format result file
-#          sarif-result-file: sarif
-#         # APIsec host url
-#          apisec-host: "https://developer.apisec.ai"
-#         # Whether to send reports email
-#          apisec-email-report: true
-#         # Type of Report to be email
-#          apisec-report-type: RUN_SUMMARY
+      - name: APIsec Playbook Regeneration
+        # You may pin to the exact commit or the version.
+        # uses: SyedsImran/NewDrone@d87c44bc8df00f0a624dd7532f8fd813248a590a
+        uses: SyedsImran/NewDrone@v1.0.0
+        with:
+         apisec-username:  syedimran@apisec.ai
+         apisec-password:  Dev@ops5665
+         apisec-projectname: netbankingtet123
+         apisec-profile: Master
+         apisec-region: Super_1
+         sarif-result-file: sarif
+         apisec-host: "https://developer.apisec.ai"
+         apisec-email-report: true
+         apisec-report-type: RUN_SUMMARY
