@@ -153,7 +153,7 @@ while [ "$playbookTaskStatus" == "In_progress" ]
                                                 tCount=`expr $tCount + 1`
                                              done
                                          echo "Total Vulnerabilities found are: $tCount"
-                                         if [ $tCount -gt 12 ]; then
+                                         if [ $tCount -gt 20 ]; then
                                                echo "Failing script execution since Total Vulnerabilities found are: $tCount which are greater than thrshold value of 12 vulnerablities"
                                                exit 1
                                          fi
