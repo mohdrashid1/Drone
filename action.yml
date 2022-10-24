@@ -81,6 +81,6 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run:  ${GITHUB_ACTION_PATH}/apisec_playbooks_regenerate_scan_trigger.sh  "${{ inputs.apisec-username }}" "${{ inputs.apisec-password }}" "${{ inputs.apisec-projectname }}" "${{ inputs.apisec-profile }}" "${{ inputs.apisec-region }}" "${{ inputs.sarif-result-file }}" "${{ inputs.apisec-host }}" "${{ inputs.apisec-email-report }}"  "${{ inputs.apisec-report-type }}"
+    - run:  ${GITHUB_ACTION_PATH}/apisec_playbooks_regenerate_scan_trigger.sh --username "${{ inputs.apisec-username }}" --password "${{ inputs.apisec-password }}" --projectname "${{ inputs.apisec-projectname }}" --profile "${{ inputs.apisec-profile }}" --scanner "${{ inputs.apisec-region }}" --outputfile "${{ inputs.sarif-result-file }}" --host "${{ inputs.apisec-host }}" --emailReport "${{ inputs.apisec-email-report }}" --reportType "${{ inputs.apisec-report-type }}"
 #    - run:  ${GITHUB_ACTION_PATH}/apisec_playbooks_regenerate_scan_trigger.sh  "${{ inputs.apisec-username }}" "${{ inputs.apisec-password }}" "${{ inputs.apisec-projectname }}" "${{ inputs.apisec-profile }}" "${{ inputs.apisec-region }}" "${{ inputs.sarif-result-file }}" "${{ inputs.apisec-host }}" "${{ inputs.apisec-email-report }}"  "${{ inputs.apisec-report-type }}"
       shell: bash
