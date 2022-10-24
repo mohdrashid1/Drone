@@ -1,0 +1,54 @@
+# This is a basic workflow to help you get started with Actions
+
+name: APIsec Playbook Scan
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo Hello, world!
+        
+      - name: APIsec Playbook Regeneration
+        # You may pin to the exact commit or the version.
+        # uses: SyedsImran/NewDrone@d87c44bc8df00f0a624dd7532f8fd813248a590a
+        uses: SyedsImran/NewDrone@v1.0.0
+        with:
+         # The APIsec username with which the scans will be executed
+         apisec-username: ${{ secrets.USERNAME }}
+         # The Password of the APIsec user with which the scans will be executed
+         apisec-password: ${{ secrets.PASSWORD }}
+         # The Name of the project for security scan
+         apisec-projectname: netbankingtet123
+         # The Name of the scan profile to be executed
+         apisec-profile: Master
+         # The location the scan will be executed in
+         apisec-region: Super_1
+         # The path to the sarif format result file
+         sarif-result-file: sarif
+        # APIsec host url
+         apisec-host: "https://developer.apisec.ai"
+        # Whether to send reports email
+         apisec-email-report: true
+        # Type of Report to be email
+         apisec-report-type: RUN_SUMMARY
