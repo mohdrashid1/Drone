@@ -65,18 +65,18 @@ inputs:
     description: 'The path to the sarif format result file'
     required: false
     default: ''
-  apisec-host:
-    description: 'APIsec host url'
-    required: false
-    default: ''
-  apisec-email-report:
-    description: 'Whether to send report's email'
-    required: false
-    default: ''
-  apisec-report-type:
-    description: 'Type of Report to be email'
-    required: false
-    default: ''
+#   apisec-host:
+#     description: 'APIsec host url'
+#     required: false
+#     default: ''
+#   apisec-email-report:
+#     description: 'Whether to send report's email'
+#     required: false
+#     default: ''
+#   apisec-report-type:
+#     description: 'Type of Report to be email'
+#     required: false
+#     default: ''
 
 runs:
   using: "composite"
