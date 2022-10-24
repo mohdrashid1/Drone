@@ -141,7 +141,7 @@ while [ "$playbookTaskStatus" == "In_progress" ]
                                    if [ "$OUTPUT_FILENAME" != "" ];
                                    then
                                          sarifoutput=$(curl -s --location --request GET "${FX_HOST}/api/v1/projects/${projectId}/sarif" --header "Authorization: Bearer "$token"" | jq  '.data')
-			                 echo $sarifoutput >> $OUTPUT_FILENAME
+			                 echo $sarifoutput >> $GITHUB_WORKSPACE/$OUTPUT_FILENAME
 					 echo "SARIF output file created successfully"
                                          echo " "
                                          severity=$(curl -s -X GET "${FX_HOST}/api/v1/projects/${projectId}/vulnerabilities?&severity=All&page=0&pageSize=20" -H "accept: */*"  "Content-Type: application/json" --header "Authorization: Bearer "$token"" | jq -r '.data[] | .severity')
