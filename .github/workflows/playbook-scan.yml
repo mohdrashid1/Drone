@@ -45,8 +45,8 @@ jobs:
         # uses: SyedsImran/NewDrone@d87c44bc8df00f0a624dd7532f8fd813248a590a
         uses: SyedsImran/NewDrone@v1.0.0
         with:
-         apisec-username:  syedimran@apisec.ai
-         apisec-password:  Dev@ops5665
+         apisec-username: $❴❴ secrets.apisec_username ❵❵ 
+         apisec-password: $❴❴ secrets.apisec_password ❵❵        
          apisec-projectname: netbankingtet123
          apisec-profile: Master
          apisec-region: Super_1
