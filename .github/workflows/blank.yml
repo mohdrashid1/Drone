@@ -35,9 +35,9 @@ jobs:
         uses: SyedsImran/NewDrone@v1.0.0
         with:
          # The APIsec username with which the scans will be executed
-         apisec-username: ${{ secrets.apisec_username }}
+         apisec-username: syedimran@apisec.ai
          # The Password of the APIsec user with which the scans will be executed
-         apisec-password: ${{ secrets.apisec_password }}
+         apisec-password: Welcome@1234
          # The Name of the project for security scan
          apisec-projectname: netbankingtet123
          # The Name of the scan profile to be executed
