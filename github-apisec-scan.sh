@@ -26,7 +26,7 @@ fi
 token=$(curl -s -H "Content-Type: application/json" -X POST -d '{"username": "'${USER}'", "password": "'${PWD}'"}' https://developer.apisec.ai/login | jq -r .token)
 
 echo "generated token is:" $token
-
+echo " "
 echo "The request is https://developer.apisec.ai/api/v1/runs/projectName/${PROJECT}${PARAM_SCRIPT}"
 
 data=$(curl --location --request POST "https://developer.apisec.ai/api/v1/runs/projectName/${PROJECT}${PARAM_SCRIPT}" --header "Authorization: Bearer "$token"" | jq '.data')
