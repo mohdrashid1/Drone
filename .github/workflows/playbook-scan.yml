@@ -49,7 +49,7 @@ jobs:
         with:
           apisec-username: ${{ secrets.apisec_username }}
           apisec-password: ${{ secrets.apisec_password }}
-          apisec-projectname: netbankingtet123
+          apisec-project: netbankingtet123
           apisec-profile: Master
           apisec-region: Super_1
           sarif-result-file: sarif
@@ -107,7 +107,7 @@ jobs:
 #         with:
 #           apisec-username: $❴❴ secrets.apisec_username ❵❵ 
 #           apisec-password: $❴❴ secrets.apisec_password ❵❵        
-#           apisec-projectname: netbankingtet123
+#           apisec-project: netbankingtet123
 #           apisec-profile: Master
 #           apisec-region: Super_1
 #           sarif-result-file: sarif
