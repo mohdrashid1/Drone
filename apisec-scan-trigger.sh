@@ -104,7 +104,13 @@ fi
 sCount=0
 echo " "
 
-data=$(curl -s --location --request POST "https://cloud.apisec.ai/api/v1/runs/project/${PROJECT}?jobName=${JOB}&region=${REGION}&emailReport=${FX_EMAIL_REPORT}&reportType=RUN_SUMMARY${FX_SCRIPT}" --header "Authorization: Bearer "$token"" | jq '.data')
+url="https://cloud.apisec.ai/api/v1/runs/project/${PROJECT}?jobName=${JOB}&region=${REGION}&emailReport=${FX_EMAIL_REPORT}&reportType=RUN_SUMMARY${FX_SCRIPT}"
+
+echo "The runID url is: $url"
+
+data=$(curl -s --location --request POST "$url" --header "Authorization: Bearer "$token"" | jq '.data')
+
+#data=$(curl -s --location --request POST "https://cloud.apisec.ai/api/v1/runs/project/${PROJECT}?jobName=${JOB}&region=${REGION}&emailReport=${FX_EMAIL_REPORT}&reportType=RUN_SUMMARY${FX_SCRIPT}" --header "Authorization: Bearer "$token"" | jq '.data')
 
 #"https://cloud.apisec.ai/api/v1/runs/project/${FX_PROJECT_NAME}?jobName=${JOB_NAME}&region=${REGION}&emailReport=true&reportType=Run_Summary${FX_SCRIPT}"
 
