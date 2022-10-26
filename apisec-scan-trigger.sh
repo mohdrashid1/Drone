@@ -196,7 +196,7 @@ while [ "$taskStatus" == "WAITING" -o "$taskStatus" == "PROCESSING" ]
               if [ "$OUTPUT_FILENAME" != "" ];
               then
                      sarifoutput=$(curl -s --location --request GET "${FX_HOST}/api/v1/projects/${projectId}/sarif" --header "Authorization: Bearer "$token"" | jq  '.data')
-		     echo $sarifoutput >> $OUTPUT_FILENAME
+		     echo $sarifoutput >> $GITHUB_WORKSPACE/$OUTPUT_FILENAME
 		     echo "SARIF output file created successfully"
                      echo " "
 
