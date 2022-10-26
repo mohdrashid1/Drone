@@ -15,9 +15,9 @@
 #
 #
 # How to run the this script.
-# Synxtax:       bash apisec-scan-trigger.sh --host "<Hostname or IP>" --username "<username>" --password "<password>"   --projectname "<projectname>" --profile "<profile_name>" --scanner "<Scanner_Name>" --emailReport <true/false> --reportType <report type to be email> --outputfile "<outputfile-name>" --severity "<severity>" --threshold <integer no.> --playbookRegenerate <true/false>
+# Synxtax:       bash apisec-scan-trigger.sh --hostname "<Hostname or IP>"        --username "<username>"       --password "<password>"   --projectname "<projectname>" --profile "<profile_name>" --scanner "<Scanner_Name>" --emailReport <true/false>   --reportType <report type to be email>  --outputfile "<outputfile-name>"  --severity "<severity>" --threshold <integer no.>   --playbookRegenerate <true/false>
 
-# Example usage: bash apisec-scan-trigger.sh --host "https://cloud.apisec.ai"  --username "admin@apisec.ai" --password "apisec@5421" --projectname "devops" --profile "Master" --scanner "Super_1" --emailReport true --reportType "RUN_SUMMARY" --outputfile "sarif" --severity "High" --threshold 3 --playbookRegenerate true
+# Example usage: bash apisec-scan-trigger.sh --hostname "https://cloud.apisec.ai"  --username "admin@apisec.ai" --password "apisec@5421"   --projectname "devops"       --profile "Master"         --scanner "Super_1"        --emailReport true           --reportType "RUN_SUMMARY"              --outputfile "sarif"              --severity "High"       --threshold 3               --playbookRegenerate true
 
 TEMP=$(getopt -n "$0" -a -l "hostname:,username:,password:,projectname:,profile:,scanner:,emailReport:,reportType:,tags:,outputfile:,severity:,threshold:,playbookRegenerate:," -- -- "$@")
 
