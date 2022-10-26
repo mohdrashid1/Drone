@@ -167,7 +167,7 @@ while [ "$taskStatus" == "WAITING" -o "$taskStatus" == "PROCESSING" ]
                            #severity=$(curl -s -X GET "https://cloud.apisec.ai/api/v1/projects/${projectId}/vulnerabilities?&severity=${SEVERITY}&page=0&pageSize=20" -H "accept: */*"  "Content-Type: application/json" --header "Authorization: Bearer "$token"" | jq -r '.data[] | .severity')
                            vulCount=$(curl -s -X GET "https://cloud.apisec.ai/api/v1/projects/${projectId}/vulnerabilities?&severity=${SEVERITY}&page=0&pageSize=20" -H "accept: */*"  "Content-Type: application/json" --header "Authorization: Bearer "$token"" | jq -r '.totalElements')
                            if [ $vulCount -gt $THRESHOLD ]; then
-                                echo "Failing script execution since we have found $vulCount "$SEVERITY" severity vulnerabilities!!!"
+                                echo "Failing script execution since we have found $vulCount "$SEVERITY" severity vulnerabilities severity vulnerabilities which are greater than threshold limit of $THRESHOLD"
                                 exit 1
                            fi
                      fi
