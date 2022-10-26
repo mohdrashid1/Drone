@@ -27,7 +27,7 @@ inputs:
     required: false
     default: ''
   apisec-vulnerability-policy:
-    description: 'Set this as true to break pipeline execution based on severity. By default it's set as false.'
+    description: 'Set this as true to break pipeline execution based on severity. By default its set as false.'
     required: false
     default: 'false'    
   apisec-severity:  
