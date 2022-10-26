@@ -45,7 +45,7 @@ inputs:
   apisec-hostname:
     description: 'APIsec Product HostName/URL '
     required: false
-    default: 'https://cloud.apiesc.ai'      
+    default: 'https://cloud.apisec.ai'      
  
 runs:
   using: "composite" 
