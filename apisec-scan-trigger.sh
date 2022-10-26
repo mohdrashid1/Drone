@@ -1,16 +1,23 @@
 #!/bin/bash
 # Begin
-
-#THRESHOLD="${THRESHOLD:-0}"
-
-#!/bin/bash
-# Begin
-# Script Purpose: This script will update/rgenerate playbooks of a project and upon successful operation will trigger a scan.
+# Script Purpose: This script does following things:
+#                 1. Will update/regenerate playbooks of a project if --playbookRegenerate flag is set as true.
+#
+#                 2. Will trigger a scan on a project.
+#
+#                 3. Will generate Sarif file after scan trigger gets completed, if --outputfile parameter passed as "sarif".
+#                    We can use it to  file Vulnerabilities in Github CodeScanning/SecurityCenter.
+#
+#                 4. Checks vulnerability count of a severity like "Critical" and breaks execution pipeline if threshold limit is breached.
+#                    We need to pass --severity "<severity>" --threshold <integer no.> flags.
+#
+#                 5. To get email reports for trigger scans we need to set --emailReport flag as "true".
+#
 #
 # How to run the this script.
-# Synxtax:       bash apisec_playbooks_regenerate_scan_trigger.sh --host "<Hostname or IP>" --username "<username>" --password "<password>"   --projectname "<projectname>" --profile "<profile_name>" --scanner "<Scanner_Name>" --emailReport <true/false> --reportType <report type to be email> --outputfile "<>"
+# Synxtax:       bash apisec-scan-trigger.sh --host "<Hostname or IP>" --username "<username>" --password "<password>"   --projectname "<projectname>" --profile "<profile_name>" --scanner "<Scanner_Name>" --emailReport <true/false> --reportType <report type to be email> --outputfile "<outputfile-name>" --severity "<severity>" --threshold <integer no.> --playbookRegenerate <true/false>
 
-# Example usage: bash apisec_playbooks_regenerate_scan_trigger.sh --host "https://cloud.apisec.ai"  --username "admin@apisec.ai" --password "apisec@5421" --projectname "devops" --profile "Master" --scanner "Super_1" --emailReport true --reportType "RUN_SUMMARY" --outputfile "sarif"
+# Example usage: bash apisec-scan-trigger.sh --host "https://cloud.apisec.ai"  --username "admin@apisec.ai" --password "apisec@5421" --projectname "devops" --profile "Master" --scanner "Super_1" --emailReport true --reportType "RUN_SUMMARY" --outputfile "sarif" --severity "High" --threshold 3 --playbookRegenerate true
 
 TEMP=$(getopt -n "$0" -a -l "hostname:,username:,password:,projectname:,profile:,scanner:,emailReport:,reportType:,tags:,outputfile:,severity:,threshold:,playbookRegenerate:," -- -- "$@")
 
