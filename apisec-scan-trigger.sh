@@ -229,7 +229,7 @@ while [ "$taskStatus" == "WAITING" -o "$taskStatus" == "PROCESSING" ]
                                done
 
                            if [ $vulCount -gt $THRESHOLD ]; then
-                                echo "Failing script execution since we have found $cVulCount Critical and $hVulCount High severity( inTotal $vulCount)  vulnerabilities which are greater than threshold limit of $THRESHOLD"
+                                echo "Failing script execution since we have found $cVulCount Critical and $hVulCount High severity,  in total $vulCount vulnerabilities which are greater than threshold limit of $THRESHOLD"
                                 exit 1
                            fi
                      fi
@@ -262,7 +262,7 @@ while [ "$taskStatus" == "WAITING" -o "$taskStatus" == "PROCESSING" ]
                                done
 
                            if [ $vulCount -gt $THRESHOLD ]; then
-                                echo "Failing script execution since we have found $cVulCount Critical,  $hVulCount High and $mVulCount Medium severity( inTotal $vulCount)  vulnerabilities which are greater than threshold limit of $THRESHOLD"
+                                echo "Failing script execution since we have found $cVulCount Critical,  $hVulCount High and $mVulCount Medium severity, in total $vulCount vulnerabilities which are greater than threshold limit of $THRESHOLD"
                                 exit 1
                            fi
                      fi
