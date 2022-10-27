@@ -10,7 +10,7 @@ steps:
      scanner: Super_1
      email: true
      hostUrl: https://developer.apisec.ai
-     projectName: nerwersdfprject
+     projectName: netbankingtet123
      profile: Master
      report: RUN_SUMMARY
      vulnerabilityFlag: true
