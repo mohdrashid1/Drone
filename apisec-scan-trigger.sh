@@ -8,8 +8,20 @@
 #                 3. Will generate Sarif file after scan trigger gets completed, if --outputfile parameter passed as "sarif".
 #                    We can use it to  file Vulnerabilities in Github CodeScanning/SecurityCenter.
 #
-#                 4. Checks vulnerability count of a severity like "Critical" and breaks execution pipeline if threshold limit is breached.
-#                    We need to pass --severity "<severity>" --threshold <integer no.> flags.
+#                 4. Checks vulnerability count of a severity like "Critical" and breaks pipeline execution if threshold limit is breached.
+#                    Only when User need to set flag --vulnerabilityPolicy as true to trigger severity check otherwise it won't trigger.
+#
+#                    i) If user only set flag --vulnerabilityPolicy as true and didn't pass any severity then default use case will be checked.
+#                       In the default use-case Critical and High severity will be checked and script willbreak pipeline execution even if any 
+#                       one vulnerability is found for either of them as threshold for all the use-cases is zero if user didn't pass threshold value.
+#
+#                    ii) If user set flag --vulnerabilityPolicy as true and severity as Critical, then only Critical severity will checked.
+#
+#                    iii) If user set flag --vulnerabilityPolicy as true and severity as High, then Critical and High severity will checked.
+#
+#                     iv) If user set flag --vulnerabilityPolicy as true and severity as Medium, then Critical, High and Medium severity will checked.
+#
+#                         We need to pass --severity "<severity>" --threshold <integer no.> flags.
 #
 #                 5. To get email reports for trigger scans we need to set --emailReport flag as "true".
 #
