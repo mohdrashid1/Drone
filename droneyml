@@ -12,6 +12,7 @@ steps:
      hostUrl: https://developer.apisec.ai
      projectName: nerwersdfprject
      profile: Master
+     vulnerabilityFlag: false
      report: RUN_SUMMARY
      password:
        from_secret: password
