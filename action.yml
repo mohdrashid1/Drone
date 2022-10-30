@@ -26,35 +26,35 @@ inputs:
     description: 'The path to the sarif format result file'
     required: false
     default: ''
-  apisec-fail-on-high-vulns: 
-    description: 'Set this as true to break pipeline execution based on severity. By default its set as false.'
-    required: false
-    default: 'false'      
-  apisec-playbookCreatePolicy:
-    description: 'Whether to regenerate the playbooks. If yes, pass value as "true" or else "false".'
-    required: false
-    default: ''  
   apisec-email-report:
-    description: 'Whether to trigger scan email reports. If yes, pass value as "true" or else "false"'
+    description: 'To trigger scan email reports, set this value as "true" or else "false"'
     required: false
     default: ''
+  apisec-fail-on-high-vulns: 
+    description: 'Set this as true to break pipeline execution for High and Critical severity. By default its set as false.'
+    required: false
+    default: 'false'     
   apisec-oas:
-    description: 'Whether to register an project. If yes, pass value as "true" or else "false"'
+    description: 'To register a project, set this value as "true" or else "false"'
     required: false
-    default: 'false'  
-  apisec-hostname:
-    description: 'APIsec Product HostName/URL'
-    required: false
-    default: 'https://cloud.apisec.ai' 
+    default: 'false'
   apisec-openapi-spec-url: 
-    description: 'APIsec Product HostName/URL'
+    description: 'OpenAPI Spec Url for registering a project'
     required: false
-    default: 'http://netbanking.apisec.ai:8080/v2/api-docs'   
+    default: ''    
+  apisec-refresh-playbooks:
+    description: 'To regenerate/refresh the playbooks of a project, set this value as "true" or else "false"'
+    required: false
+    default: ''  
+  apisec-scan-all-projects:
+    description: 'To trigger scans on all projects, set this value as "true" or else "false"'
+    required: false
+    default: 'false'    
  
 runs:
   using: "composite" 
   steps:
-    - run:  ${GITHUB_ACTION_PATH}/apisec-vulnerability-check.sh --username "${{inputs.apisec-username}}" --password "${{ inputs.apisec-password }}" --project "${{ inputs.apisec-project }}" --profile "${{ inputs.apisec-profile }}" --scanner "${{ inputs.apisec-region }}"  --outputfile  ${{ inputs.sarif-result-file }}   --playbookCreatePolicy "${{ inputs.apisec-playbookCreatePolicy }}" --host "${{ inputs.apisec-hostname }}" --emailReport "${{ inputs.apisec-email-report }}" --fail-on-high-vulns "${{ inputs.apisec-fail-on-high-vulns }}" --oas "${{ inputs.apisec-oas }}" --openApiSpecUrl "${{ inputs.apisec-openapi-spec-url }}"  
+    - run:  ${GITHUB_ACTION_PATH}/apisec-vulnerability-check.sh --username "${{inputs.apisec-username}}" --password "${{ inputs.apisec-password }}" --project "${{ inputs.apisec-project }}" --profile "${{ inputs.apisec-profile }}" --scanner "${{ inputs.apisec-region }}"  --outputfile  ${{ inputs.sarif-result-file }}   --refresh-playbooks "${{ inputs.apisec-playbookCreatePolicy }}" --host "${{ inputs.apisec-hostname }}" --emailReport "${{ inputs.apisec-email-report }}" --fail-on-high-vulns "${{ inputs.apisec-fail-on-high-vulns }}" --oas "${{ inputs.apisec-oas }}" --openApiSpecUrl "${{ inputs.apisec-openapi-spec-url }}" --scanAllProjects  "${{ inputs.apisec-scan-all-projects }}" 
 #    - run:  ${GITHUB_ACTION_PATH}/apisec-scan-trigger.sh --username "${{inputs.apisec-username}}" --password "${{ inputs.apisec-password }}" --projectname "${{ inputs.apisec-project }}" --profile "${{ inputs.apisec-profile }}" --scanner "${{ inputs.apisec-region }}" --outputfile "${{ inputs.sarif-result-file }}" --severity "${{ inputs.apisec-severity  }}" --threshold "${{ inputs.apisec-threshold }}" --playbookRegenerate "${{ inputs.apisec-playbook-regenerate }}" --hostname "${{ inputs.apisec-hostname }}" --emailReport "${{ inputs.apisec-email-report }}" --vulnerabilityPolicy "${{ inputs.apisec-vulnerability-policy }}"
 #    - run:  ${GITHUB_ACTION_PATH}/apisec-scan-trigger.sh "${{inputs.apisec-username}}" "${{ inputs.apisec-password }}" "${{ inputs.apisec-project }}" "${{ inputs.apisec-profile }}" "${{ inputs.apisec-region }}" "${{ inputs.sarif-result-file }}" "${{ inputs.apisec-severity  }}" "${{ inputs.apisec-threshold }}" "${{ inputs.apisec-playbook-regenerate }}" "${{ inputs.apisec-email-report }}"
       shell: bash
