@@ -13,11 +13,11 @@ steps:
      projectName: netbankingtet123
      profile: Master
      report: RUN_SUMMARY
-     vulnerabilityFlag: true
+     fail-on-high-vulns: true
      password:
-       from_secret: password
+       from_secret: apisec_password
      username:
-       from_secret: username
+       from_secret: apisec_username
 
 
 
