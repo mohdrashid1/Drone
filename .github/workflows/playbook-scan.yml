@@ -29,14 +29,31 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
-
-      - name: Trigger APIsec scan
-        id: scan
+        
+      - name: APIsec Scan
         uses: apisec-inc/apisec-run-scan@v1.0.6
         with:
-          apisec-username: ${{ secrets.apisec_username }}
-          apisec-password: ${{ secrets.apisec_password }}
+          apisec-username:  ${{ secrets.apisec_username }} 
+          apisec-password:  ${{ secrets.apisec_password }}
           apisec-host: "https://developer.apisec.ai"
-          apisec-project: "Test"
+          apisec-project: "HMAC"
           apisec-profile: "Master"
           apisec-region: "Super_1"
+#          sarif-result-file:  
+          apisec-email-report: "false" 
+          apisec-fail-on-high-vulns: "false" 
+          apisec-oas: "false" 
+          apisec-openapi-spec-url: "http://netbanking.apisec.ai:8080/v2/api-docs"
+          apisec-refresh-playbooks: "false"  
+      
+#       - name: Trigger APIsec scan
+#         id: scan
+#         uses: apisec-inc/apisec-run-scan@v1.0.6
+#         with:
+#           apisec-username: 
+#           apisec-password: 
+          
+#           apisec-project: "Test"
+#           apisec-profile: "Master"
+#           apisec-region: "Super_1"
+          
