@@ -35,7 +35,7 @@ jobs:
         with:
           apisec-username:  ${{ secrets.apisec_username }} 
           apisec-password:  ${{ secrets.apisec_password }}
-#          apisec-host: https://developer.apisec.ai
+          apisec-host-url: https://developer.apisec.ai
           apisec-project: "HMAC"
           apisec-profile: "Master"
           apisec-region: "Super_1"
